@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wordCount {
+            margin-top: 10px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- Part (a): Textarea with character limit and word count -->
+    <h3>A.</h3>
+    <textarea id="limitedTextarea" rows="4" cols="50" maxlength="100"></textarea>
+    <div id="wordCount">Word Count: 0</div>
+
+    <!-- Part (b): Add dynamic paragraph -->
+    <h3>B.</h3>
+    <div id="fruitContainer">
+        <p>Apple</p>
+        <p>Orange</p>
+        <p>Banana</p>
+        <p>Kiwi</p>
+        <p>Grapes</p>
+        <p>Mango</p>
+    </div>
+
+    <!-- Part (c): Delete all child elements except the first one -->
+    <h3>C.</h3>
+    <div id="exercises">
+        <p>PHP Exercises</p>
+        <p>WordPress Exercises</p>
+        <p>Drupal Exercises</p>
+        <p>Python Exercises</p>
+        <p>.NET Exercises</p>
+        <p>Laravel Exercises</p>
+        <p>ReactJS Exercises</p>
+    </div>
+
+    <script>
+        // Part (a): Limit number of characters in the textarea and show word count when typing
+        const textarea = document.getElementById('limitedTextarea');
+        const wordCountDisplay = document.getElementById('wordCount');
+
+        textarea.addEventListener('input', function() {
+            const wordCount = this.value.split(/\s+/).filter(function(word) {
+                return word.length > 0;
+            }).length;
+            wordCountDisplay.textContent = `Word Count: ${wordCount}`;
+        });
+
+        // Part (b): Add a dynamic paragraph <p>Watermelon</p> using JS
+        const fruitContainer = document.getElementById('fruitContainer');
+        const newParagraph = document.createElement('p');
+        newParagraph.textContent = 'Watermelon';
+        fruitContainer.appendChild(newParagraph);
+
+        // Part (c): Delete all child elements of DIV except the first one
+        const exercisesDiv = document.getElementById('exercises');
+        while (exercisesDiv.children.length > 1) {
+            exercisesDiv.removeChild(exercisesDiv.lastChild);
+        }
+    </script>
+</body>
+</html>
